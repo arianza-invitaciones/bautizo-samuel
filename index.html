@@ -366,7 +366,7 @@
     }
 
     /* ============================================================
-       3. ESCENARIO PRINCIPAL 100% RESPONSIVO PARA CELULAR
+       3. ESCENARIO PRINCIPAL 100% AJUSTADO AL CELULAR
        ============================================================ */
     .stage-wrapper {
       position: relative;
@@ -390,7 +390,7 @@
       pointer-events: none;
     }
 
-    /* Proporción 2:3 idéntica a Arco Celestial para Bautizo.png para que nunca se deforme */
+    /* Proporción 2:3 idéntica a Arco Celestial para Bautizo.png */
     .hero-arch-section {
       position: relative;
       width: 100%;
@@ -402,9 +402,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
       text-align: center;
-      padding: 23% 12% 16%;
+      padding: 25.5% 15% 21%;
       z-index: 2;
     }
 
@@ -436,12 +436,12 @@
       z-index: 2;
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: clamp(0.84rem, 2.7vw, 1.04rem);
+      font-size: clamp(0.76rem, 2.35vw, 0.94rem);
       font-weight: 600;
       color: var(--navy-mid);
-      max-width: 82%;
-      margin: 0 auto;
-      line-height: 1.25;
+      max-width: 86%;
+      margin: 0 auto 2%;
+      line-height: 1.22;
       text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95);
     }
 
@@ -453,18 +453,17 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-evenly;
-      padding: 2% 2% 0;
-      border-radius: 34px;
+      justify-content: space-between;
+      padding: 1% 2% 1%;
+      border-radius: 28px;
       background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.42) 72%, rgba(255, 255, 255, 0) 100%);
     }
 
-    /* "MI BAUTIZO" fluido según el ancho del celular */
     .silver-baptism-title {
       font-family: "Century Gothic", CenturyGothic, "AppleGothic", 'Montserrat', sans-serif;
-      font-size: clamp(2.15rem, 8.2vw, 3.65rem);
+      font-size: clamp(1.65rem, 6.4vw, 2.8rem);
       font-weight: 700;
-      letter-spacing: clamp(2px, 1vw, 5px);
+      letter-spacing: clamp(2px, 0.8vw, 4.5px);
       text-transform: uppercase;
       line-height: 1.08;
       background: linear-gradient(110deg, #647589 12%, #9aa9ba 35%, #f5f8fb 50%, #8c9cac 66%, #5f7084 88%);
@@ -472,7 +471,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       -webkit-text-stroke: 0.6px rgba(255, 255, 255, 0.9);
-      filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.95)) drop-shadow(0 3px 6px rgba(23, 42, 64, 0.25));
+      filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.95)) drop-shadow(0 2px 5px rgba(23, 42, 64, 0.25));
       animation: silverShimmer 4.5s ease-in-out infinite;
     }
 
@@ -486,31 +485,29 @@
       width: 100%;
     }
 
-    /* Samuel en dorado intenso fluido */
     .calligraphy-name-first {
       font-family: 'Great Vibes', 'Cormorant Garamond', cursive;
-      font-size: clamp(3.3rem, 13.5vw, 5.8rem);
+      font-size: clamp(2.6rem, 10.8vw, 4.7rem);
       font-weight: 400;
       color: var(--gold-intense);
-      line-height: 0.92;
+      line-height: 0.94;
       text-shadow: 0 2px 3px rgba(255, 255, 255, 0.95);
     }
 
-    /* Estrada Valois en azul marino fluido */
     .calligraphy-name-last {
       font-family: 'Great Vibes', 'Cormorant Garamond', cursive;
-      font-size: clamp(1.35rem, 5vw, 2.1rem);
+      font-size: clamp(1.1rem, 4.2vw, 1.75rem);
       font-weight: 400;
       color: var(--navy-deep);
       line-height: 1.05;
-      margin-top: 2px;
+      margin-top: 1px;
       text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
     }
 
     .angel-divider-wrap {
       position: relative;
-      width: 88%;
-      max-width: 310px;
+      width: 84%;
+      max-width: 260px;
       margin: 0 auto;
       background: transparent;
     }
@@ -525,13 +522,14 @@
       filter: none;
     }
 
+    /* Frase final contenida dentro del arco para que no la tape el botón de audio */
     .sacred-quote {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: clamp(0.82rem, 2.75vw, 1.06rem);
+      font-size: clamp(0.72rem, 2.25vw, 0.92rem);
       color: var(--navy-deep);
-      line-height: 1.28;
-      max-width: 84%;
+      line-height: 1.24;
+      max-width: 88%;
       margin: 0 auto;
     }
 
@@ -895,7 +893,7 @@
         </div>
 
         <p class="sacred-quote">
-          “Señor, hoy me presentan ante Ti para ser bañado con la gracia de Tu amor y comenzar mi camino en la fe.”
+          “Señor, hoy me presentan ante ti para ser bañado con la gracia de tu amor y comenzar mi camino en la fe.”
         </p>
       </div>
     </header>
