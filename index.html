@@ -35,18 +35,21 @@
 
     html {
       scroll-behavior: smooth;
+      width: 100%;
+      overflow-x: hidden;
     }
 
     body {
       font-family: 'Montserrat', sans-serif;
       background: linear-gradient(180deg, #dfeaf6 0%, #eef4fb 45%, #e4eef8 100%);
       color: var(--navy-deep);
+      width: 100%;
       overflow-x: hidden;
-      min-height: 100vh;
+      min-height: 100dvh;
     }
 
     /* ============================================================
-       1. SOBRE AZUL CIELO CON EXTRACCIÓN HACIA ARRIBA
+       1. SOBRE AZUL CIELO ADAPTABLE A CUALQUIER CELULAR
        ============================================================ */
     #envelopeScreen {
       position: fixed;
@@ -59,7 +62,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 16px;
       perspective: 1400px;
       transition: opacity 0.85s ease, visibility 0.85s ease;
     }
@@ -72,7 +75,7 @@
 
     .envelope-scene {
       width: 100%;
-      max-width: 390px;
+      max-width: min(390px, 92vw);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -81,7 +84,7 @@
     }
 
     .envelope-scene.extracting {
-      transform: translateY(88px);
+      transform: translateY(72px);
     }
 
     .envelope-wrapper {
@@ -110,7 +113,7 @@
       bottom: 8%;
       height: 86%;
       background:
-        linear-gradient(rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.88)),
+        linear-gradient(rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.9)),
         url('Arco Celestial para Bautizo.png') center top/cover no-repeat;
       border: 1.5px solid var(--gold-rich);
       border-radius: 12px;
@@ -121,7 +124,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 18px 14px;
+      padding: 14px 10px;
       transform: translateY(0) scale(0.96);
       transition: transform 1.15s cubic-bezier(0.22, 1, 0.36, 1) 0.35s, box-shadow 1.15s ease 0.35s;
       pointer-events: none;
@@ -130,24 +133,24 @@
     .pull-out-card::before {
       content: "";
       position: absolute;
-      inset: 6px;
+      inset: 5px;
       border: 1px solid rgba(181, 141, 61, 0.45);
       border-radius: 8px;
     }
 
     .pull-out-card .mini-label {
       font-family: "Century Gothic", CenturyGothic, "AppleGothic", 'Montserrat', sans-serif;
-      font-size: 0.82rem;
-      letter-spacing: 3px;
+      font-size: clamp(0.68rem, 2.4vw, 0.82rem);
+      letter-spacing: 2.5px;
       font-weight: 700;
       text-transform: uppercase;
       color: var(--navy-mid);
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
 
     .pull-out-card .mini-name {
       font-family: 'Great Vibes', 'Cormorant Garamond', cursive;
-      font-size: 1.85rem;
+      font-size: clamp(1.45rem, 5.2vw, 1.85rem);
       color: var(--navy-deep);
       line-height: 1.1;
     }
@@ -155,14 +158,14 @@
     .pull-out-card .mini-date {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 0.88rem;
+      font-size: clamp(0.78rem, 2.5vw, 0.88rem);
       color: var(--gold-rich);
-      margin-top: 6px;
+      margin-top: 5px;
       font-weight: 700;
     }
 
     .envelope-scene.extracting .pull-out-card {
-      transform: translateY(-165px) scale(1.04);
+      transform: translateY(-135px) scale(1.03);
       box-shadow: 0 24px 50px rgba(23, 42, 64, 0.28);
       z-index: 6;
     }
@@ -244,8 +247,8 @@
       top: 52%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 128px;
-      height: 128px;
+      width: clamp(104px, 31vw, 128px);
+      height: clamp(104px, 31vw, 128px);
       border: none;
       padding: 0;
       cursor: pointer;
@@ -253,7 +256,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      /* Silueta orgánica de lacre fundido a mano */
       border-radius: 52% 48% 51% 49% / 49% 53% 47% 51%;
       background:
         radial-gradient(circle at 28% 22%, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0) 34%),
@@ -269,10 +271,8 @@
           #d7e0ea 360deg
         );
       box-shadow:
-        /* Sombra proyectada sobre el sobre */
         0 14px 26px rgba(18, 35, 56, 0.34),
         0 4px 8px rgba(18, 35, 56, 0.22),
-        /* Labio exterior grueso de cera fundida */
         inset 0 3px 5px rgba(255, 255, 255, 0.95),
         inset 0 -5px 9px rgba(58, 72, 89, 0.55),
         inset 4px 0 7px rgba(255, 255, 255, 0.65),
@@ -281,47 +281,42 @@
       animation: gentleSealFloat 3.4s ease-in-out infinite;
     }
 
-    /* Hundimiento interior del cuño metálico */
     .luxury-wax-seal::before {
       content: "";
       position: absolute;
-      inset: 13px;
+      inset: 11%;
       border-radius: 50%;
       background:
         radial-gradient(circle at 68% 72%, rgba(255, 255, 255, 0.88) 0%, rgba(232, 239, 246, 0.4) 45%, rgba(154, 169, 186, 0.38) 100%);
       border: 1px solid rgba(255, 255, 255, 0.72);
       box-shadow:
-        /* Sombra interna de cuño presionado */
         inset 0 4px 8px rgba(52, 66, 84, 0.42),
         inset 0 -3px 6px rgba(255, 255, 255, 0.92),
-        /* Filo dorado sutil en el aro interior */
         0 0 0 1.5px rgba(181, 141, 61, 0.38);
       pointer-events: none;
     }
 
-    /* Segundo aro fino grabado y destello satinado */
     .luxury-wax-seal::after {
       content: "";
       position: absolute;
-      inset: 18px;
+      inset: 16%;
       border-radius: 50%;
       border: 1px dashed rgba(181, 141, 61, 0.45);
       box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8);
       pointer-events: none;
     }
 
-    /* Leyenda "Invitación Especial" esculpida en bajorrelieve */
     .seal-text {
       position: relative;
       z-index: 2;
       font-family: 'Cinzel', serif;
-      font-size: 0.56rem;
+      font-size: clamp(0.48rem, 1.55vw, 0.56rem);
       font-weight: 700;
-      letter-spacing: 1.2px;
+      letter-spacing: 1px;
       text-transform: uppercase;
       line-height: 1.35;
       text-align: center;
-      max-width: 78px;
+      max-width: 68%;
       background: linear-gradient(155deg, #3b4c61 0%, #6c7f94 48%, #9e7422 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -333,11 +328,6 @@
 
     .luxury-wax-seal:hover {
       transform: translate(-50%, -50%) scale(1.06);
-      box-shadow:
-        0 18px 32px rgba(18, 35, 56, 0.38),
-        0 6px 12px rgba(18, 35, 56, 0.24),
-        inset 0 3px 6px rgba(255, 255, 255, 1),
-        inset 0 -5px 9px rgba(58, 72, 89, 0.55);
     }
 
     .envelope-scene.extracting .luxury-wax-seal {
@@ -352,10 +342,10 @@
     }
 
     .envelope-hint {
-      margin-top: 24px;
+      margin-top: 20px;
       background: rgba(255, 255, 255, 0.84);
       backdrop-filter: blur(8px);
-      padding: 10px 22px;
+      padding: 9px 20px;
       border-radius: 50px;
       border: 1px solid rgba(181, 141, 61, 0.35);
       box-shadow: 0 6px 18px rgba(23, 42, 64, 0.08);
@@ -368,7 +358,7 @@
 
     .envelope-hint p {
       font-family: 'Cinzel', serif;
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--navy-deep);
@@ -376,11 +366,12 @@
     }
 
     /* ============================================================
-       3. ESCENARIO PRINCIPAL: PORTADA QUE SE MUEVE CON SU FONDO
+       3. ESCENARIO PRINCIPAL 100% RESPONSIVO PARA CELULAR
        ============================================================ */
     .stage-wrapper {
       position: relative;
-      max-width: 520px;
+      width: 100%;
+      max-width: 480px;
       margin: 0 auto;
       background: linear-gradient(180deg, #eef5fc 0%, #e5eff9 50%, #eef5fc 100%);
       box-shadow: 0 0 60px rgba(23, 42, 64, 0.16);
@@ -393,26 +384,27 @@
       left: 50%;
       transform: translateX(-50%);
       width: 100%;
-      max-width: 520px;
-      height: 100vh;
+      max-width: 480px;
+      height: 100dvh;
       z-index: 4;
       pointer-events: none;
     }
 
+    /* Proporción 2:3 idéntica a Arco Celestial para Bautizo.png para que nunca se deforme */
     .hero-arch-section {
       position: relative;
       width: 100%;
-      min-height: 860px;
+      aspect-ratio: 2 / 3;
       background-image: url('Arco Celestial para Bautizo.png');
-      background-size: cover;
-      background-position: center;
+      background-size: 100% 100%;
+      background-position: center top;
       background-repeat: no-repeat;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: space-between;
       text-align: center;
-      padding: 16% 9% 0;
+      padding: 23% 12% 16%;
       z-index: 2;
     }
 
@@ -444,12 +436,12 @@
       z-index: 2;
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 1.06rem;
+      font-size: clamp(0.84rem, 2.7vw, 1.04rem);
       font-weight: 600;
       color: var(--navy-mid);
-      max-width: 280px;
-      margin: 56px auto 0;
-      line-height: 1.28;
+      max-width: 82%;
+      margin: 0 auto;
+      line-height: 1.25;
       text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95);
     }
 
@@ -457,27 +449,31 @@
       position: relative;
       z-index: 2;
       width: 100%;
-      padding: 6px 4px 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      padding: 2% 2% 0;
       border-radius: 34px;
       background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.42) 72%, rgba(255, 255, 255, 0) 100%);
     }
 
+    /* "MI BAUTIZO" fluido según el ancho del celular */
     .silver-baptism-title {
       font-family: "Century Gothic", CenturyGothic, "AppleGothic", 'Montserrat', sans-serif;
-      font-size: 4.05rem;
+      font-size: clamp(2.15rem, 8.2vw, 3.65rem);
       font-weight: 700;
-      letter-spacing: 5px;
+      letter-spacing: clamp(2px, 1vw, 5px);
       text-transform: uppercase;
-      line-height: 1.12;
+      line-height: 1.08;
       background: linear-gradient(110deg, #647589 12%, #9aa9ba 35%, #f5f8fb 50%, #8c9cac 66%, #5f7084 88%);
       background-size: 220% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      -webkit-text-stroke: 0.7px rgba(255, 255, 255, 0.9);
+      -webkit-text-stroke: 0.6px rgba(255, 255, 255, 0.9);
       filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.95)) drop-shadow(0 3px 6px rgba(23, 42, 64, 0.25));
       animation: silverShimmer 4.5s ease-in-out infinite;
-      margin-top: 38px;
-      margin-bottom: 0;
     }
 
     @keyframes silverShimmer {
@@ -486,32 +482,36 @@
       100% { background-position: 180% center; }
     }
 
+    .name-block {
+      width: 100%;
+    }
+
+    /* Samuel en dorado intenso fluido */
     .calligraphy-name-first {
       font-family: 'Great Vibes', 'Cormorant Garamond', cursive;
-      font-size: 6.4rem;
+      font-size: clamp(3.3rem, 13.5vw, 5.8rem);
       font-weight: 400;
       color: var(--gold-intense);
-      line-height: 0.94;
-      margin-top: 54px;
+      line-height: 0.92;
       text-shadow: 0 2px 3px rgba(255, 255, 255, 0.95);
     }
 
+    /* Estrada Valois en azul marino fluido */
     .calligraphy-name-last {
       font-family: 'Great Vibes', 'Cormorant Garamond', cursive;
-      font-size: 2.2rem;
+      font-size: clamp(1.35rem, 5vw, 2.1rem);
       font-weight: 400;
       color: var(--navy-deep);
       line-height: 1.05;
-      margin-top: 4px;
-      margin-bottom: 0;
+      margin-top: 2px;
       text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
     }
 
     .angel-divider-wrap {
       position: relative;
-      width: 96%;
-      max-width: 340px;
-      margin: 36px auto 0;
+      width: 88%;
+      max-width: 310px;
+      margin: 0 auto;
       background: transparent;
     }
 
@@ -528,20 +528,20 @@
     .sacred-quote {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 1.14rem;
+      font-size: clamp(0.82rem, 2.75vw, 1.06rem);
       color: var(--navy-deep);
-      line-height: 1.35;
-      max-width: 300px;
-      margin: 10px auto 0;
+      line-height: 1.28;
+      max-width: 84%;
+      margin: 0 auto;
     }
 
     /* ============================================================
-       4. SECCIONES PLATEADAS CON BORDES DELICADOS Y LETRAS DORADAS EN CURSIVA
+       4. SECCIONES PLATEADAS RESPONSIVAS
        ============================================================ */
     .parchments-container {
       position: relative;
       z-index: 3;
-      padding: 6px 9% 85px;
+      padding: 8px 6% 80px;
       background:
         radial-gradient(circle at 20% 20%, rgba(168, 210, 245, 0.25) 0%, transparent 50%),
         radial-gradient(circle at 80% 70%, rgba(230, 209, 162, 0.22) 0%, transparent 55%);
@@ -549,8 +549,8 @@
 
     .silver-section {
       position: relative;
-      margin: 0 0 24px;
-      padding: 24px 18px;
+      margin: 0 0 20px;
+      padding: 22px 14px;
       text-align: center;
       background: linear-gradient(160deg, var(--silver-panel-top) 0%, var(--silver-panel-mid) 52%, var(--silver-panel-bottom) 100%);
       border: 1px solid var(--silver-border);
@@ -585,7 +585,7 @@
     .parchment-title {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 1.75rem;
+      font-size: clamp(1.45rem, 4.8vw, 1.75rem);
       font-weight: 700;
       color: var(--gold-rich);
       letter-spacing: 1px;
@@ -596,13 +596,13 @@
       background: rgba(255, 255, 255, 0.72);
       border: 1px solid rgba(180, 192, 206, 0.65);
       border-radius: 14px;
-      padding: 14px 10px;
+      padding: 12px 8px;
       margin-bottom: 16px;
     }
 
     .month-calendar-header {
       font-family: 'Cinzel', serif;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -613,12 +613,12 @@
     .calendar-weekdays {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 3px;
+      gap: 2px;
       margin-bottom: 6px;
     }
 
     .calendar-weekdays span {
-      font-size: 0.62rem;
+      font-size: 0.6rem;
       font-weight: 600;
       color: var(--navy-mid);
       text-transform: uppercase;
@@ -627,15 +627,15 @@
     .calendar-days-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 4px;
+      gap: 3px;
     }
 
     .cal-day {
-      height: 28px;
+      height: 26px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       color: var(--navy-deep);
       border-radius: 50%;
     }
@@ -651,7 +651,7 @@
     .cal-time-caption {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       font-weight: 700;
       color: var(--gold-rich);
       margin-top: 10px;
@@ -660,7 +660,7 @@
     .countdown-heading {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 1.5rem;
+      font-size: 1.45rem;
       font-weight: 700;
       color: var(--navy-deep);
       letter-spacing: 1px;
@@ -683,7 +683,7 @@
 
     .timer-val {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.35rem;
+      font-size: clamp(1.1rem, 4vw, 1.35rem);
       font-weight: 700;
       color: var(--gold-intense);
       line-height: 1.05;
@@ -692,9 +692,9 @@
 
     .timer-unit {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.56rem;
+      font-size: 0.54rem;
       text-transform: uppercase;
-      letter-spacing: 0.6px;
+      letter-spacing: 0.5px;
       color: var(--navy-mid);
       margin-top: 3px;
       font-weight: 600;
@@ -703,34 +703,34 @@
     .blessing-text {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 1.06rem;
+      font-size: 1.04rem;
       color: var(--navy-mid);
       margin-bottom: 6px;
     }
 
     .person-line {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.48rem;
+      font-size: clamp(1.24rem, 4.2vw, 1.48rem);
       font-weight: 600;
       color: var(--navy-deep);
       line-height: 1.35;
     }
 
     .place-time {
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: 600;
       color: var(--sky-deep);
       margin-bottom: 6px;
     }
 
     .place-name {
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       color: var(--navy-deep);
       margin-bottom: 14px;
     }
 
     .place-name-no-btn {
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       color: var(--navy-deep);
       margin-bottom: 2px;
     }
@@ -740,7 +740,7 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      padding: 10px 20px;
+      padding: 10px 18px;
       border-radius: 999px;
       font-size: 0.78rem;
       font-weight: 600;
@@ -763,10 +763,10 @@
 
     .audio-fab {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 48px;
-      height: 48px;
+      bottom: 16px;
+      right: 16px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.94);
       border: 1.5px solid var(--silver-dark);
@@ -783,7 +783,7 @@
       display: flex;
       align-items: flex-end;
       gap: 3px;
-      height: 15px;
+      height: 14px;
     }
 
     .equalizer span {
@@ -800,25 +800,12 @@
 
     @keyframes eqMove {
       0%, 100% { height: 4px; }
-      50% { height: 15px; }
+      50% { height: 14px; }
     }
 
     .closing-note {
       text-align: center;
       padding: 10px 10px 20px;
-    }
-
-    @media (max-width: 420px) {
-      .hero-arch-section { min-height: 780px; padding: 16% 9% 0; }
-      .opening-blessing { font-size: 0.98rem; margin-top: 42px; }
-      .silver-baptism-title { font-size: 3.35rem; letter-spacing: 3.5px; margin-top: 28px; }
-      .calligraphy-name-first { font-size: 5.1rem; margin-top: 42px; }
-      .calligraphy-name-last { font-size: 1.9rem; }
-      .angel-divider-wrap { width: 100%; margin-top: 28px; }
-      .sacred-quote { font-size: 1.04rem; margin-top: 8px; }
-      .timer-val { font-size: 1.18rem; }
-      .person-line { font-size: 1.28rem; }
-      .silver-section { padding: 20px 14px; }
     }
   </style>
 </head>
@@ -873,7 +860,7 @@
     </div>
   </div>
 
-  <!-- Audio opcional (si colocas musica.mp3 en la carpeta se reproducirá al abrir) -->
+  <!-- Audio opcional -->
   <audio id="bgMusic" loop preload="auto">
     <source src="musica.mp3" type="audio/mpeg">
   </audio>
@@ -898,8 +885,10 @@
       <div class="hero-glow-box">
         <h2 class="silver-baptism-title">MI<br>BAUTIZO</h2>
 
-        <h1 class="calligraphy-name-first">Samuel</h1>
-        <p class="calligraphy-name-last">Estrada Valois</p>
+        <div class="name-block">
+          <h1 class="calligraphy-name-first">Samuel</h1>
+          <p class="calligraphy-name-last">Estrada Valois</p>
+        </div>
 
         <div class="angel-divider-wrap">
           <img src="angelito.png" alt="Angelito de bautizo" class="angel-divider-img">
